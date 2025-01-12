@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Admin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>P.O.I</h1>
+            <p class="breadcrumb">Linea di Percorso: HOME > Admin</p>
+        </header>
+
+        <div class="form-container">
+            <h2>Form</h2>
+            <div class="form-group">
+                <label for="param1">Parametro</label>
+                <input type="text" id="param1" placeholder="input">
+            </div>
+            <div class="form-group">
+                <label for="param2">Parametro</label>
+                <input type="text" id="param2" placeholder="input">
+            </div>
+            <div class="form-group">
+                <label for="param3">Parametro</label>
+                <input type="text" id="param3" placeholder="input">
+            </div>
+            <button class="add-button">Aggiungi posto</button>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Dettagli</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nome posto 1</td>
+                    <td>Dettagli del primo posto</td>
+                    <td>
+                        <button>Elimina posto</button>
+                        <button class="modify">Modifica posto</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nome posto 2</td>
+                    <td>Dettagli del secondo posto</td>
+                    <td>
+                        <button>Elimina posto</button>
+                        <button class="modify">Modifica posto</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nome posto 3</td>
+                    <td>Dettagli del terzo posto</td>
+                    <td>
+                        <button>Elimina posto</button>
+                        <button class="modify">Modifica posto</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
