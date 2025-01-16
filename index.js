@@ -13,8 +13,11 @@ import { createLogin } from './componenti/login.js';
 import {generateFetchComponent} from './componenti/fetch_component.js';
 import {createMap} from './componenti/mappa.js';
 import {ricerca} from './componenti/barra_ricerca.js';
+import { createNavigator } from "./navigator.js";
+
 
 fetch("conf.json").then(r => r.json()).then(conf => {
+    const navigator = createNavigator(document.querySelector("#container"));
     const form = createForm(formElement);
     const form_login = createFormLogin(formLogin);
     const table1 = tableComponent();
