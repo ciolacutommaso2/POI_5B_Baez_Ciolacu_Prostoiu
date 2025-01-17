@@ -22,6 +22,16 @@ form_login.render(Login,bottone_admin)
 const Map=createMap()
 Map.render()
 
+
+//BARRA DI RICERCA
+let filtro = document.getElementById("filtro");
+filtro.addEventListener('input', function() {
+    let dati = table1.exportData()
+    let new_data=ricerca(filtro.value,dati);
+    table1.reset_inizio()
+    table1.dati_filtro(new_data)
+    table1.render()
+});
 fetch("conf.json").then(r => r.json()).then(conf => {
     const navigator = createNavigator(document.querySelector("#container"));
     const form = createForm(formElement);
