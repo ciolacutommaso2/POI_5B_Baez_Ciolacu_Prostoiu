@@ -24,6 +24,7 @@ Map.render()
 
 fetch("conf.json").then(r => r.json()).then(conf => {
     const navigator = createNavigator(document.querySelector("#container"));
+    const form = createForm(formElement);
 });
 window.addEventListener("load", function () {
     let risposta = sessionStorage.getItem("login");
