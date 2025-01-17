@@ -6,3 +6,8 @@
     display: none;
 }
 #map { width: 800px; height: 500px; }
+
+#Password {
+    margin-bottom: 20px;
+}
+

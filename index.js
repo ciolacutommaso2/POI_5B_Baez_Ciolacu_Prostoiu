@@ -1,7 +1,8 @@
 const tabella = document.getElementById("tabella");
 const formElement = document.getElementById("form");
 const formLogin = document.getElementById("formlogin");
-const bottone_admin = document.getElementById("buttonadmin")
+const bottone_formlogin = document.getElementById("Login");
+const bottone_admin = document.getElementById("buttonadmin");
 document.body.focus();
 bottone_admin.classList.add("d-none");
 let starDay = 0;
@@ -15,6 +16,9 @@ import {createMap} from './componenti/mappa.js';
 import {ricerca} from './componenti/barra_ricerca.js';
 import {createNavigator} from "./componenti/navigator.js";
 
+const form_login=createFormLogin(formLogin)
+const Login = createLogin()
+form_login.render(Login,bottone_admin)
 const Map=createMap()
 Map.render()
 
@@ -23,9 +27,8 @@ fetch("conf.json").then(r => r.json()).then(conf => {
 });
 window.addEventListener("load", function () {
     let risposta = sessionStorage.getItem("login");
-    let Login = createLogin()
     console.log(risposta)
     if (risposta==="true"){
-        Login.render(bottone_admin)
+        bottone_admin.classList.remove("d-none")
     }
 });
