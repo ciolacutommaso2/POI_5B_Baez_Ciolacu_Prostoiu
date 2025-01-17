@@ -15,6 +15,8 @@ import {createMap} from './componenti/mappa.js';
 import {ricerca} from './componenti/barra_ricerca.js';
 import {createNavigator} from "./componenti/navigator.js";
 
+const Map=createMap()
+Map.render()
 
 fetch("conf.json").then(r => r.json()).then(conf => {
     const navigator = createNavigator(document.querySelector("#container"));
