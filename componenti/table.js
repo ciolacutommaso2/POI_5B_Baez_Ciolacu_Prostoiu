@@ -2,6 +2,7 @@ export const tableComponent = () => {
     let data= [];
     let data2= [];
     let inizioIndex = 0;
+    let tipo="";
     let templateRow = `
         <tr class="tbl1">
             <td class = "border border-slate-600" >#D1</td>
@@ -9,9 +10,6 @@ export const tableComponent = () => {
             <td class = "border border-slate-600" >#D3</td>
             <td class = "border border-slate-600" >#D4</td>
             <td class = "border border-slate-600" >#D5</td>
-            <td class = "border border-slate-600" >#D6</td>
-            <td class = "border border-slate-600" >#D7</td>
-            <td class = "border border-slate-600" >#D8</td>
         </tr>
     `;
     let parentElement;
@@ -38,9 +36,8 @@ export const tableComponent = () => {
         exportData: () => {return data;},
         render: () => {
             
-            let html = ` <tr class="border"><th class="border-spacing-x-2">Indirizzo</th><th class="border">Targa 1</th>
-            <th class="border">Targa 2</th><th class="border">Targa 3</th><th class="border">Data</th><th class="border">Ora</th>
-            <th class="border">Feriti</th><th class="border">Morti</th></tr>`
+            let html = ` <tr class="table-light"><th class="table-light">Nome Battaglia</th><th class="table-light">Breve Descrizione</th>
+            <th class="table-light">Feriti</th><th class="table-light">Inizio</th><th class="table-light">Fine</th></tr>`
             let c = 0;
             data2.forEach((el) => {
                 if (c >= inizioIndex && c < (inizioIndex + 5)){
