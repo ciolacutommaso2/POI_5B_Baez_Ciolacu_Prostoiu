@@ -2,7 +2,7 @@ export const createMap = () =>{
     let minZoom=10
     let zoom = 12;
     let maxZoom = 19;
-    let map = L.map('map').setView([45.464098, 9.191926], zoom);
+    let map = L.map('map').setView([38.8951, -77.0364], zoom);
     let places = [];
      return{
         setData: (dato) =>{places=dato},
