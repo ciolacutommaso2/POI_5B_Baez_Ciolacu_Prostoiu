@@ -8,18 +8,18 @@ export const createForm = (parentElement) => {
         render: (table1, mappa, conf,compFetch) => {
             //creazione input
             parentElement.innerHTML = 
-                <div>Posizione 📍<br/><input id="Posizione" type="text" class="form-control"/></div>+
-                <div>Titolo <br/><input id="Titolo" type="text" class="form-control"/></div>+
-                <div>Data di inizio <br/><input id="Data_inizio" type="date" class="form-control"/></div>+
-                <div>Data di fine <br/><input id="Data_fine" type="date" class="form-control"/></div>+
-                <div>Paragrafo 1<br/><input id="Paragrafo_1" type="text" class="form-control"/></div>+
-                <div>Paragrafo 2<br/><input id="Paragrafo_2" type="text" class="form-control"/></div>+
-                <div>Paragrafo 3<br/><input id="Paragrafo_3" type="text" class="form-control"/></div>+
-                <div>Numero feriti<br/><input id="Feriti" type="number" class="form-control"/></div>+
-                <div>Numero morti <br/><input id="Morti" type="number" class="form-control"/></div>+
-                <div>immagine 1<br/><input id="Immagine_1" type="text" class="form-control"/></div>+
-                <div>immagine 2<br/><input id="Immagine_2" type="text" class="form-control mb-3"/></div>+
-                <div id="outputform"></div>
+                `<div>Posizione 📍<br/><input id="Posizione" type="text" class="form-control"/></div>`+
+                `<div>Titolo <br/><input id="Titolo" type="text" class="form-control"/></div>`+
+                `<div>Data di inizio <br/><input id="Data_inizio" type="date" class="form-control"/></div>`+
+                `<div>Data di fine <br/><input id="Data_fine" type="date" class="form-control"/></div>`+
+                `<div>Paragrafo 1<br/><input id="Paragrafo_1" type="text" class="form-control"/></div>`+
+                `<div>Paragrafo 2<br/><input id="Paragrafo_2" type="text" class="form-control"/></div>`+
+                `<div>Paragrafo 3<br/><input id="Paragrafo_3" type="text" class="form-control"/></div>`+
+                `<div>Numero feriti<br/><input id="Feriti" type="number" class="form-control"/></div>`+
+                `<div>Numero morti <br/><input id="Morti" type="number" class="form-control"/></div>`+
+                `<div>immagine 1<br/><input id="Immagine_1" type="text" class="form-control"/></div>`+
+                `<div>immagine 2<br/><input id="Immagine_2" type="text" class="form-control mb-3"/></div>`+
+                `<div id="outputform"></div>`
             //lettura valori inseriti;
             document.querySelector("#Aggiungi").onclick = () => {
                 const Posizione = document.querySelector("#Posizione").value;
