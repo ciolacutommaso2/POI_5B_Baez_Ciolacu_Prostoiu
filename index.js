@@ -36,6 +36,7 @@ fetch("conf.json").then(r => r.json()).then(conf => {
     table1.setParentElement(tabella);
     table1.render()
     const form = createForm(formElement);
+    form.render()
 });
 window.addEventListener("load", function () {
     let risposta = sessionStorage.getItem("login");

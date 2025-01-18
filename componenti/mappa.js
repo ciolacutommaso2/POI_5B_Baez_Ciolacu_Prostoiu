@@ -1,7 +1,7 @@
 export const createMap = () =>{
-    let minZoom=10
+    let minZoom=4;
     let zoom = 4;
-    let maxZoom = 19;
+    let maxZoom = 5;
     let map = L.map('map').setView([37.697948,-97.314835], zoom);
     let places = [];
      return{
@@ -13,6 +13,7 @@ export const createMap = () =>{
         render: () => {
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                maxZoom: maxZoom,
+               minZoom: minZoom,
                attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
             places.forEach((place) => {
