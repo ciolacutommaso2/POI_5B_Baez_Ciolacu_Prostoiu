@@ -1,8 +1,13 @@
+//import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/esm-browser/index.js';
+
+
 const tabella = document.getElementById("tabella");
 const formElement = document.getElementById("form");
 const formLogin = document.getElementById("formlogin");
 const bottone_formlogin = document.getElementById("Login");
 const bottone_admin = document.getElementById("buttonadmin");
+const paginaPosto = document.getElementById("pagina_posto");
 document.body.focus();
 bottone_admin.classList.add("d-none");
 let starDay = 0;
@@ -15,6 +20,7 @@ import {generateFetchComponent} from './componenti/fetch_component.js';
 import {createMap} from './componenti/mappa.js';
 import {ricerca} from './componenti/barra_ricerca.js';
 import {createNavigator} from "./componenti/navigator.js";
+import {createDetail} from "./componenti/detail.js"
 //BARRA DI RICERCA
 //let filtro = document.querySelectorAll("filtro");
 //filtro.addEventListener('input', function() {
@@ -37,9 +43,15 @@ fetch("conf.json").then(r => r.json()).then(conf => {
         table1.setParentElement(tabella);
         table1.setData(p);
         table1.render();
+        //pagina posto
+        const detailComp = createDetail(paginaPosto);
+        detailComp.setData(p);
+        detailComp.render();
+        //-
         const form = createForm(formElement);
         form.render();
         document.querySelector("#Aggiungi").onclick = () => {
+            const Posizione = document.querySelector("#Posizione").value;
             const Titolo = document.querySelector("#Titolo").value;
             const Datainizio = document.querySelector("#Data_inizio").value;
             const Datafine = document.querySelector("#Data_fine").value;
@@ -56,6 +68,9 @@ fetch("conf.json").then(r => r.json()).then(conf => {
             }else{
                 outputform.innerHTML="ok";  
                 let nuovo_dato = {}
+                const idunico = uuidv4();//ID GENERATO CASUALMENTE
+                nuovo_dato["id"] = idunico
+                nuovo_dato["Posizione"] = Posizione
                 nuovo_dato["Nome"]=Titolo
                 nuovo_dato["Data_inizio"]=Datainizio
                 nuovo_dato["Data_fine"]=Datafine

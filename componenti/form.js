@@ -4,6 +4,7 @@ export const createForm = (parentElement) => {
         render: () => {
             //creazione input
             parentElement.innerHTML = 
+                `<div>Posizione 📍<br/><input id="Posizione" type="text" class="form-control"/></div>`+
                 `<div>Titolo <br/><input id="Titolo" type="text" class="form-control"/></div>`+
                 `<div>Data di inizio <br/><input id="Data_inizio" type="date" class="form-control"/></div>`+
                 `<div>Data di fine <br/><input id="Data_fine" type="date" class="form-control"/></div>`+
@@ -11,12 +12,13 @@ export const createForm = (parentElement) => {
                 `<div>Paragrafo 2<br/><input id="Paragrafo_2" type="text" class="form-control"/></div>`+
                 `<div>Paragrafo 3<br/><input id="Paragrafo_3" type="text" class="form-control"/></div>`+
                 `<div>Numero feriti<br/><input id="Feriti" type="number" class="form-control"/></div>`+
-                `<div>Numero morti<br/><input id="Morti" type="number" class="form-control"/></div>`+
+                `<div>Numero morti <br/><input id="Morti" type="number" class="form-control"/></div>`+
                 `<div>immagine 1<br/><input id="Immagine_1" type="text" class="form-control"/></div>`+
-                `<div>immagine 2<br/><input id="Immagine_2" type="text" class="form-control"/></div>`+
+                `<div>immagine 2<br/><input id="Immagine_2" type="text" class="form-control mb-3"/></div>`+
                 `<div id="outputform"></div>`
             //lettura valori inseriti;
             document.querySelector("#Aggiungi").onclick = () => {
+                const Posizione = document.querySelector("#Posizione").value;
                 const Titolo = document.querySelector("#Titolo").value;
                 const Datainizio = document.querySelector("#Data_inizio").value;
                 const Datafine = document.querySelector("#Data_fine").value;
@@ -27,7 +29,7 @@ export const createForm = (parentElement) => {
                 const morti = document.querySelector("#Morti").value;
                 const Immagine_1 = document.querySelector("#Immagine_1").value;
                 const Immagine_2 = document.querySelector("#Immagine_2").value;
-                if (Titolo === "" || Datainizio === "" || Datafine === "" || Paragrafo_1 === "" && Paragrafo_2 === "" && Paragrafo_3 === "" || feriti === "" || morti === "" || Immagine_1 === "" && Immagine_2 === "") {
+                if (Posizione === "" || Titolo === "" || Datainizio === "" || Datafine === "" || Paragrafo_1 === "" && Paragrafo_2 === "" && Paragrafo_3 === "" || feriti === "" || morti === "" || Immagine_1 === "" && Immagine_2 === "") {
                     // LUTENTE NON HA INSERITO CORRETTAMENTE I DATI
                     outputform.innerHTML="ko";
                 }else{
