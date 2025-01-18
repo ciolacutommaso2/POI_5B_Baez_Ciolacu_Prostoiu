@@ -39,17 +39,15 @@ export const tableComponent = () => {
             let html = ` <tr class="table-light"><th class="table-light">Nome Battaglia</th><th class="table-light">Breve Descrizione</th>
             <th class="table-light">Feriti</th><th class="table-light">Inizio</th><th class="table-light">Fine</th></tr>`
             let c = 0;
+            console.log(data,data2)
             data2.forEach((el) => {
                 if (c >= inizioIndex && c < (inizioIndex + 5)){
                     let html2 = "";
-                    html2 += templateRow.replace("#D1", el.name.indirizzo);
-                    html2 = html2.replace("#D2", el.name.targa1);
-                    html2 = html2.replace("#D3", el.name.targa2);
-                    html2 = html2.replace("#D4", el.name.targa3);
-                    html2 = html2.replace("#D5", el.name.data);
-                    html2 = html2.replace("#D6", el.name.ora);
-                    html2 = html2.replace("#D7", el.name.feriti);
-                    html2 = html2.replace("#D8", el.name.morti);   
+                    html2 += templateRow.replace("#D1", el.Nome);
+                    html2 = html2.replace("#D2", el.Paragrafo1);
+                    html2 = html2.replace("#D3", el.Num_feriti);
+                    html2 = html2.replace("#D4", el.Data_inizio);
+                    html2 = html2.replace("#D5", el.Data_fine);  
                     html += html2;             
                 }
                 c++;

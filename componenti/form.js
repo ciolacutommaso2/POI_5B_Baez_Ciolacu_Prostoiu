@@ -1,4 +1,5 @@
 export const createForm = (parentElement) => {
+
     return { 
         render: () => {
             //creazione input
@@ -17,8 +18,8 @@ export const createForm = (parentElement) => {
             //lettura valori inseriti;
             document.querySelector("#Aggiungi").onclick = () => {
                 const Titolo = document.querySelector("#Titolo").value;
-                const Data_inizio = document.querySelector("#Data_inizio").value;
-                const Data_fine = document.querySelector("#Data_fine").value;
+                const Datainizio = document.querySelector("#Data_inizio").value;
+                const Datafine = document.querySelector("#Data_fine").value;
                 const Paragrafo_1 = document.querySelector("#Paragrafo_1").value;
                 const Paragrafo_2 = document.querySelector("#Paragrafo_2").value;
                 const Paragrafo_3 = document.querySelector("#Paragrafo_3").value;
@@ -26,11 +27,12 @@ export const createForm = (parentElement) => {
                 const morti = document.querySelector("#Morti").value;
                 const Immagine_1 = document.querySelector("#Immagine_1").value;
                 const Immagine_2 = document.querySelector("#Immagine_2").value;
-                if (Titolo === "" || Data_inizio === "" || Data_fine === "" || Paragrafo_1 === "" && Paragrafo_2 === "" && Paragrafo_3 === "" || feriti === "" || morti === "" || Immagine_1 === "" && Immagine_2 === "") {
+                if (Titolo === "" || Datainizio === "" || Datafine === "" || Paragrafo_1 === "" && Paragrafo_2 === "" && Paragrafo_3 === "" || feriti === "" || morti === "" || Immagine_1 === "" && Immagine_2 === "") {
                     // LUTENTE NON HA INSERITO CORRETTAMENTE I DATI
                     outputform.innerHTML="ko";
                 }else{
                     outputform.innerHTML="ok";
+                    
         }
     }
 }

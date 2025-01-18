@@ -13,7 +13,7 @@ export const createFormLogin = (parentElement) => {
                 }else{
                     login.login(Nome,Password).then((r)=>{
                         console.log(r)
-                        if(r==="Ok"){
+                        if(r===true){
                             login.sessionstorage()
                         }
                         let risposta = sessionStorage.getItem("login");
