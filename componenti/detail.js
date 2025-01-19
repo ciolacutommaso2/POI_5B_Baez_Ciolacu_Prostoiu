@@ -103,8 +103,7 @@ export const createDetail = (parentElement) => {
                                 </section>
                             </div>
                             <div class="col-md-4">
-                                <div class="border rounded bg-light d-flex align-items-center justify-content-center"
-                                    style="height: 300px;">
+                                <div class="border rounded bg-light d-flex align-items-center justify-content-center height-auto">
                                     <span class="text-center">
                                         <img src="${item.name.Immagine_1}" alt="${item.name.Titolo}" class="immaginiDetail" />
                                     </span>

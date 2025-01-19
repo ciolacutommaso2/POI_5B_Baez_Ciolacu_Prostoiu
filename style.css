@@ -12,8 +12,6 @@
 }
 
 .immaginiDetail {
-    max-width: 500px;
     width: 100%;
-    height: auto;
-    padding-top: 300px;
+    overflow: hidden;
 }
