@@ -76,6 +76,16 @@ fetch("conf.json").then(r => r.json()).then(conf => {
             let new_data = ricerca(filtro.value, dati);
             table1.dati_filtro(new_data);
             table1.render();
+            let posti = document.querySelectorAll(".marker")
+            posti.forEach((pst)=>{
+                pst.onclick=()=>{
+                    dati_fetch.forEach(df=>{
+                        if(df.name.Titolo===pst.innerText){
+                            detailComp.navigateToDetail(df.name.id);
+                        }
+                    })
+                }
+            })
         });
     }else {
         console.error("Elemento filtro non trovato!");
