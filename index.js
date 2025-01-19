@@ -43,6 +43,16 @@ fetch("conf.json").then(r => r.json()).then(conf => {
         table1.setParentElement(tabella);
         table1.setData(p);
         table1.render();
+        let posti = document.querySelectorAll(".marker")
+        posti.forEach((pst)=>{
+            pst.onclick=()=>{
+                dati_fetch.forEach(df=>{
+                    if(df.name.Titolo===pst.innerText){
+                        detailComp.navigateToDetail(df.name.id);
+                    }
+                })
+            }
+        })
         detailComp.setData(p);
 
         //TABELLA ADMIN
