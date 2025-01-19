@@ -1,4 +1,4 @@
-export const createTableAdmin = (compFetch, modificaDati, eliminaDati) => {
+export const createTableAdmin = (compFetch) => {
     let data= [];
     let data2= [];
     let tipo="";
@@ -31,7 +31,7 @@ export const createTableAdmin = (compFetch, modificaDati, eliminaDati) => {
         },
         dati_filtro: (new_Data) => {data2=new_Data},
         exportData: () => {return data;},
-        render: (form) => {
+        render: (form,table) => {
             
             console.log("DATI: ", data)
             if (parentElement){
@@ -75,11 +75,89 @@ export const createTableAdmin = (compFetch, modificaDati, eliminaDati) => {
 
             //CREAZIONE BOTTONI
             for (let i = 0; i < data.length; i++) {
-                //ELIMINA
-                document.getElementById(("eliminaBtn" + i)).onclick = eliminaDati(i);
+                //Modifica
+               document.getElementById(("modificaBtn" + i)).onclick = () => {
+                //INSERIMENTO DENTRO GLI INPUT
+                document.querySelector("#Posizione").value = data[i].name.Posizione;
+                document.querySelector("#Titolo").value = data[i].name.Titolo;
+                document.querySelector("#Data_inizio").value = data[i].name.Datainizio;
+                document.querySelector("#Data_fine").value = data[i].name.Datafine;
+                document.querySelector("#Paragrafo_1").value = data[i].name.Paragrafo_1;
+                document.querySelector("#Paragrafo_2").value = data[i].name.Paragrafo_2;
+                document.querySelector("#Paragrafo_3").value = data[i].name.Paragrafo_3;
+                document.querySelector("#Feriti").value = data[i].name.feriti;
+                document.querySelector("#Morti").value = data[i].name.morti;
+                document.querySelector("#Immagine_1").value = data[i].name.Immagine_1;
+                document.querySelector("#Immagine_2").value = data[i].name.Immagine_2;
 
-                //MODIFICA
-                document.getElementById(("modificaBtn" + i)).onclick = modificaDati(i);
+                const btnAggiungiModifica = document.querySelector("#Aggiungi");
+                btnAggiungiModifica.textContent = "Salva Modifica";
+                btnAggiungiModifica.onclick = () => {
+            
+                    let tempID = data[i].name.id;
+                    console.log("MODIFICA DATI: ", data[i].nome)
+                        const Posizione = document.querySelector("#Posizione").value;
+                        const Titolo = document.querySelector("#Titolo").value;
+                        const Datainizio = document.querySelector("#Data_inizio").value;
+                        const Datafine = document.querySelector("#Data_fine").value;
+                        const Paragrafo_1 = document.querySelector("#Paragrafo_1").value;
+                        const Paragrafo_2 = document.querySelector("#Paragrafo_2").value;
+                        const Paragrafo_3 = document.querySelector("#Paragrafo_3").value;
+                        const feriti = document.querySelector("#Feriti").value;
+                        const morti = document.querySelector("#Morti").value;
+                        const Immagine_1 = document.querySelector("#Immagine_1").value;
+                        const Immagine_2 = document.querySelector("#Immagine_2").value;
+                        
+                        const dataDiz = {
+                            "id" : tempID,
+                            "Posizione" : Posizione,
+                            "Titolo" : Titolo,
+                            "Datainizio" : Datainizio,
+                            "Datafine" : Datafine,
+                            "Paragrafo_1" : Paragrafo_1,
+                            "Paragrafo_2" : Paragrafo_2,
+                            "Paragrafo_3" : Paragrafo_3,
+                            "feriti" : feriti,
+                            "morti" : morti,
+                            "Immagine_1" : Immagine_1,
+                            "Immagine_2" : Immagine_2
+                        }
+                        data[i].name = dataDiz;
+
+                        compFetch.setData(data).then(dato => {
+                            compFetch.getData().then(datoNew=>{
+                                data = datoNew;
+                                console.log("DATO MODIFICATO -> ", datoNew);
+                                btnAggiungiModifica.textContent = "Aggiungi posto";
+                                table.render(form,table)
+                        })})
+                    }
+
+               }
+
+                //Elimina
+                document.getElementById(("eliminaBtn" + i)).onclick = () => {
+                    data.splice(i, 1);
+                    compFetch.setData(data).then(dato => {
+                        compFetch.getData().then(dato => {
+                            data = dato;
+                            console.log("DATO ELIMINATO -> ", dato);
+                            //parentElement.innerHTML = html;
+                            table.render(form,table)
+                        });
+                    });
+                }
+                document.querySelector("#Posizione").value = "";
+                document.querySelector("#Titolo").value = "";
+                document.querySelector("#Data_inizio").value = "";
+                document.querySelector("#Data_fine").value = "";
+                document.querySelector("#Paragrafo_1").value = "";
+                document.querySelector("#Paragrafo_2").value = "";
+                document.querySelector("#Paragrafo_3").value = "";
+                document.querySelector("#Feriti").value = "";
+                document.querySelector("#Morti").value = "";
+                document.querySelector("#Immagine_1").value = "";
+                document.querySelector("#Immagine_2").value = "";
 
             }  
         
