@@ -89,11 +89,12 @@ export const createTableAdmin = (compFetch) => {
                 document.querySelector("#Morti").value = data[i].name.morti;
                 document.querySelector("#Immagine_1").value = data[i].name.Immagine_1;
                 document.querySelector("#Immagine_2").value = data[i].name.Immagine_2;
+                document.querySelector("#Aggiungi").classList.remove("visible")
+                document.querySelector("#Aggiungi").classList.add("hidden")
+                document.querySelector("#Modifica").classList.remove("hidden")
+                document.querySelector("#Modifica").classList.add("visible")
 
-                const btnAggiungiModifica = document.querySelector("#Aggiungi");
-                btnAggiungiModifica.textContent = "Salva Modifica";
-                btnAggiungiModifica.onclick = () => {
-            
+                document.querySelector("#Modifica").onclick = () => {
                     let tempID = data[i].name.id;
                     console.log("MODIFICA DATI: ", data[i].nome)
                         const Posizione = document.querySelector("#Posizione").value;
@@ -128,8 +129,22 @@ export const createTableAdmin = (compFetch) => {
                             compFetch.getData().then(datoNew=>{
                                 data = datoNew;
                                 console.log("DATO MODIFICATO -> ", datoNew);
-                                btnAggiungiModifica.textContent = "Aggiungi posto";
+                                document.querySelector("#Aggiungi").classList.remove("hidden")
+                                document.querySelector("#Aggiungi").classList.add("visible")
+                                document.querySelector("#Modifica").classList.remove("visible")
+                                document.querySelector("#Modifica").classList.add("hidden")
                                 table.render(form,table)
+                                document.querySelector("#Posizione").value = "";
+                                document.querySelector("#Titolo").value = "";
+                                document.querySelector("#Data_inizio").value = "";
+                                document.querySelector("#Data_fine").value = "";
+                                document.querySelector("#Paragrafo_1").value = "";
+                                document.querySelector("#Paragrafo_2").value = "";
+                                document.querySelector("#Paragrafo_3").value = "";
+                                document.querySelector("#Feriti").value = "";
+                                document.querySelector("#Morti").value = "";
+                                document.querySelector("#Immagine_1").value = "";
+                                document.querySelector("#Immagine_2").value = "";
                         })})
                     }
 
@@ -147,17 +162,6 @@ export const createTableAdmin = (compFetch) => {
                         });
                     });
                 }
-                document.querySelector("#Posizione").value = "";
-                document.querySelector("#Titolo").value = "";
-                document.querySelector("#Data_inizio").value = "";
-                document.querySelector("#Data_fine").value = "";
-                document.querySelector("#Paragrafo_1").value = "";
-                document.querySelector("#Paragrafo_2").value = "";
-                document.querySelector("#Paragrafo_3").value = "";
-                document.querySelector("#Feriti").value = "";
-                document.querySelector("#Morti").value = "";
-                document.querySelector("#Immagine_1").value = "";
-                document.querySelector("#Immagine_2").value = "";
 
             }  
         
