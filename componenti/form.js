@@ -21,7 +21,7 @@ export const createForm = (parentElement) => {
                 `<div>immagine 2<br/><input id="Immagine_2" type="text" class="form-control mb-3"/></div>`+
                 `<div id="outputform"></div>`
             //lettura valori inseriti;
-            document.querySelector("#Aggiungi").onclick = () => {
+            document.querySelectorAll("#Aggiungi").onclick = () => {
                 const Posizione = document.querySelector("#Posizione").value;
                 const Titolo = document.querySelector("#Titolo").value;
                 const Datainizio = document.querySelector("#Data_inizio").value;
@@ -33,7 +33,7 @@ export const createForm = (parentElement) => {
                 const morti = document.querySelector("#Morti").value;
                 const Immagine_1 = document.querySelector("#Immagine_1").value;
                 const Immagine_2 = document.querySelector("#Immagine_2").value;
-                if (Titolo === "" || Datainizio === "" || Datafine === "" || Paragrafo_1 === "" && Paragrafo_2 === "" && Paragrafo_3 === "" || feriti === "" || morti === "" || Immagine_1 === "" && Immagine_2 === "") {
+                if (Titolo === "" || Posizione === "" || Datafine === "" || Datainizio ==="") {
                     // LUTENTE NON HA INSERITO CORRETTAMENTE I DATI
                     outputform.innerHTML="ko";
                 }else{
@@ -74,9 +74,8 @@ export const createForm = (parentElement) => {
                             table1.render();
                             mappa.add(dato);
                             mappa.render();
-                            data=table1.exportData()
-                            tabellaAdmin.setData(data)
-                            tabellaAdmin.render(form,tabellaAdmin)
+                            tabellaAdmin.addData(dato)
+                            tabellaAdmin.render(conf,form,tabellaAdmin,mappa,table1)
                             outputform.innerHTML="ok";
                             //}else{
                                 //outputform.innerHTML="ko";

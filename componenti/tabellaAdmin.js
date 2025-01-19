@@ -21,9 +21,8 @@ export const createTableAdmin = (compFetch) => {
         setParentElement: (pr) => {
             parentElement = pr;
         },
-        dati_filtro: (new_Data) => {data2=new_Data},
         exportData: () => {return data;},
-        render: (form,table) => {
+        render: (conf,form,table,Mappa,table1) => {
             
             console.log("DATI: ", data)
             if (parentElement){
@@ -46,7 +45,7 @@ export const createTableAdmin = (compFetch) => {
             
             //INSERIMENTO HTML
             for (let i = 0; i < data.length; i++) {
-
+                console.log(i)
 
                 // Controllo che l'oggetto abbia la struttura attesa
                 if (!data[i] || !data[i].name || !data[i].name.Titolo) {
@@ -115,8 +114,16 @@ export const createTableAdmin = (compFetch) => {
                             "Immagine_1" : Immagine_1,
                             "Immagine_2" : Immagine_2
                         }
-                        data[i].name = dataDiz;
-
+                        let url="https://us1.locationiq.com/v1/search?key=%TOKEN &q=%NOME, &format=json&"
+                        url = url.replace("%TOKEN",conf.token)
+                        url = url.replace("%NOME",Posizione)
+                        fetch(url)
+                        .then(r => r.json())
+                        .then(data3 => {
+                            console.log("ok")
+                            data[i].name = dataDiz;
+                            data[i].coords = [data3[0].lat, data3[0].lon]
+                        });
                         compFetch.setData(data).then(dato => {
                             compFetch.getData().then(datoNew=>{
                                 data = datoNew;
@@ -125,7 +132,8 @@ export const createTableAdmin = (compFetch) => {
                                 document.querySelector("#Aggiungi").classList.add("visible")
                                 document.querySelector("#Modifica").classList.remove("visible")
                                 document.querySelector("#Modifica").classList.add("hidden")
-                                table.render(form,table)
+                                table1.
+                                table.render(conf,form,table)
                                 document.querySelector("#Posizione").value = "";
                                 document.querySelector("#Titolo").value = "";
                                 document.querySelector("#Data_inizio").value = "";
@@ -150,7 +158,7 @@ export const createTableAdmin = (compFetch) => {
                             data = dato;
                             console.log("DATO ELIMINATO -> ", dato);
                             //parentElement.innerHTML = html;
-                            table.render(form,table)
+                            table.render(conf,form,table)
                         });
                     });
                 }

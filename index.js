@@ -48,7 +48,7 @@ fetch("conf.json").then(r => r.json()).then(conf => {
         //TABELLA ADMIN
         tabellaAdmin.setParentElement(tabellaAdmin1);
         tabellaAdmin.setData(p);
-        tabellaAdmin.render(form,tabellaAdmin);
+        tabellaAdmin.render(conf,form,tabellaAdmin,Map,table1);
 
         //detailComp.render();
         Map.setData(p)
