@@ -1,6 +1,5 @@
 export const createTableAdmin = (compFetch) => {
     let data= [];
-    let data2= [];
     let tipo="";
     let templateRow = `
         <tr class="tbl1">
@@ -11,20 +10,13 @@ export const createTableAdmin = (compFetch) => {
     `;
     let parentElement;
 
-    return {
-        togliDati: (inizio, fine) => {data.splice(inizio, fine)}, 
+    return { 
         setData: (dato) =>{
             data=dato;
-            data2=dato;
             console.log(dato);
         },
-        addData: (dato,compFetch) => {
+        addData: (dato) => {
             data.push(dato);
-            compFetch.setData(data).then(dato => {
-                compFetch.getData().then(dato=>{
-                    data=dato;
-                })
-            })
         },
         setParentElement: (pr) => {
             parentElement = pr;

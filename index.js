@@ -37,7 +37,7 @@ fetch("conf.json").then(r => r.json()).then(conf => {
     fetchComp.caricaDati(conf)
     fetchComp.getData().then(p => {
         if (p == null){p = []}
-        
+
         console.log("PPPP: ", p)
         dati_fetch=p;
         table1.setParentElement(tabella);
@@ -54,7 +54,7 @@ fetch("conf.json").then(r => r.json()).then(conf => {
         Map.setData(p)
         Map.render(detailComp)
     });
-    form.render(table1, Map, conf, fetchComp, tabellaAdmin);
+    form.render(form,table1, Map, conf, fetchComp, tabellaAdmin);
     form_login.render(Login,bottone_admin)
     //BARRA DI RICERCA
     //let filtro = document.querySelectorAll("filtro");
