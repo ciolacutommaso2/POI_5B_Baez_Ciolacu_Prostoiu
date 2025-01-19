@@ -10,7 +10,7 @@ export const createMap = () =>{
                 map.setView(dato.coords, zoom);
                 places.push(dato);
             },
-        render: () => {
+        render: (detailComp) => {
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                maxZoom: maxZoom,
                minZoom: minZoom,
@@ -18,8 +18,22 @@ export const createMap = () =>{
             }).addTo(map);
             places.forEach((place) => {
                 const marker = L.marker(place.coords).addTo(map);
-                marker.bindPopup(`<h4>${place.name.Titolo}</h4><p>Data: ${place.name.Datainizio}</p><p>Ora: ${place.name.Datafine}</p>
-                        <p>N° Feriti: ${place.name.feriti}</p><p>N° Morti: ${place.name.morti}</p>`);
+                marker.bindPopup(`
+                    <h4 class="marker" id="${place.name.id}">${place.name.Titolo}</h4>
+                    <p>Data: ${place.name.Datainizio}</p>
+                    <p>Ora: ${place.name.Datafine}</p>
+                    <p>N° Feriti: ${place.name.feriti}</p>
+                    <p>N° Morti: ${place.name.morti}</p>
+                `);
+                marker.on("mouseover", () => {
+                    marker.openPopup();
+                });
+                marker.on("mouseout", () => {
+                    marker.closePopup();
+                });
+                marker.on("click", () => {
+                    detailComp.navigateToDetail(place.name.id);
+                });
             });
      }
     }
