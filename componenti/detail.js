@@ -31,11 +31,18 @@ export const createDetail = (parentElement) => {
                                 </section>
                             </div>
                             <div class="col-md-4">
-                                <div class="border rounded bg-light d-flex align-items-center justify-content-center"
-                                    style="height: 300px;">
-                                    <span class="text-center">
-                                        <img src="${item.Immagine_1}" alt="${item.Titolo}" style="max-width: 100%; max-height: 100%;" />
-                                    </span>
+                                <div  id="carosello" class="border rounded bg-light d-flex align-items-center justify-content-center">
+                                    <table>
+                                        <tr>
+                                            <td><button type="button" class="btn btn-secondary">&#8592</button></td>
+
+                                            <td>
+                                                <img src="assets/ContenutoImg/Appomattox .png">
+                                            </td>
+
+                                            <td><button type="button" class="btn btn-secondary">&#8594</button></td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
