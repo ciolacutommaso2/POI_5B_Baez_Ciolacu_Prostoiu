@@ -21,7 +21,7 @@ export const createForm = (parentElement) => {
                 `<div>immagine 2<br/><input id="Immagine_2" type="text" class="form-control mb-3"/></div>`+
                 `<div id="outputform"></div>`
             //lettura valori inseriti;
-            document.querySelectorAll("#Aggiungi").onclick = () => {
+            document.querySelector("#Aggiungi").onclick = () => {
                 const Posizione = document.querySelector("#Posizione").value;
                 const Titolo = document.querySelector("#Titolo").value;
                 const Datainizio = document.querySelector("#Data_inizio").value;
