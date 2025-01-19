@@ -132,7 +132,6 @@ export const createTableAdmin = (compFetch) => {
                                 document.querySelector("#Aggiungi").classList.add("visible")
                                 document.querySelector("#Modifica").classList.remove("visible")
                                 document.querySelector("#Modifica").classList.add("hidden")
-                                table1.
                                 table.render(conf,form,table)
                                 document.querySelector("#Posizione").value = "";
                                 document.querySelector("#Titolo").value = "";

@@ -67,14 +67,19 @@ fetch("conf.json").then(r => r.json()).then(conf => {
     form.render(form,table1, Map, conf, fetchComp, tabellaAdmin);
     form_login.render(Login,bottone_admin)
     //BARRA DI RICERCA
-    //let filtro = document.querySelectorAll("filtro");
-    //filtro.addEventListener('input', function() {
-        //let dati = table1.exportData()
-        //let new_data=ricerca(filtro.value,dati);
-        //table1.reset_inizio()
-        //table1.dati_filtro(new_data)
-        //table1.render()
-    //});
+    let filtro = document.querySelector("#filtro");
+
+    if (filtro) {
+        filtro.addEventListener('input', function() {
+            console.log("filtro")
+            let dati = table1.exportData();
+            let new_data = ricerca(filtro.value, dati);
+            table1.dati_filtro(new_data);
+            table1.render();
+        });
+    }else {
+        console.error("Elemento filtro non trovato!");
+    }
 });
 window.addEventListener("load", function () {
     let risposta = sessionStorage.getItem("login");
