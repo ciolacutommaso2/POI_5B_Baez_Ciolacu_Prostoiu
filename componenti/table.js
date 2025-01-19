@@ -24,6 +24,7 @@ export const tableComponent = () => {
             compFetch.setData(data).then(dato => {
                 compFetch.getData().then(dato=>{
                     data=dato;
+                    data2=dato;
                 })
             })
         },
@@ -40,11 +41,8 @@ export const tableComponent = () => {
             
             let html = ` <tr class="table-light"><th class="table-light">Nome Battaglia</th><th class="table-light">Breve Descrizione</th>
             <th class="table-light">Feriti</th><th class="table-light">Inizio</th><th class="table-light">Fine</th></tr>`
-            let c = 0;
-            if (data2.name) {
                 console.log("DATA 2222222: ", data2)
                 data2.forEach((el) => {
-                    if (c >= inizioIndex && c < (inizioIndex + 5)){
                         let html2 = "";
                         html2 += templateRow.replace("#D1", el.name.Titolo);
                         html2 = html2.replace("#D2", el.name.Paragrafo_1);
@@ -52,10 +50,7 @@ export const tableComponent = () => {
                         html2 = html2.replace("#D4", el.name.Datainizio);
                         html2 = html2.replace("#D5", el.name.Datafine);  
                         html += html2;             
-                    }
-                    c++;
                 });
-            }
             
             
             
