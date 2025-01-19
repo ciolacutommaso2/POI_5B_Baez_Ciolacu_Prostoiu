@@ -24,12 +24,33 @@ import {createTableAdmin} from "./componenti/tabellaAdmin.js";
 
 let dati_fetch;
 
+let dt = [{
+    "name": {
+        "id": "75bb12f2-c38e-49dd-a45e-84f4148da42e",
+        "Posizione": "Fort Sumter",
+        "Titolo": "Fort Sumter (Carolina del Sud)",
+        "Datainizio": "1861-04-12",
+        "Datafine": "1861-04-13",
+        "Paragrafo_1": "Il primo scontro della guerra civile americana avvenne il 12 aprile 1861, segnando l'inizio del conflitto che durò per ben 4 anni.  In quella famosa giornata, la guarnigione dell'Unione, guidata con determinazione dal maggiore Robert Anderson, resistette a un intenso e prolungato bombardamento da parte delle forze confederate, sotto il comando del generale P.G.T. Beauregard. Dopo ore di battaglia. Cadde Fort Sumter, diventando un evento simbolico, questo evento aumentò drasticamente la tensione, spingendo il paese inesorabilmente verso una guerra totale che avrebbe segnato un'epoca.",
+        "Paragrafo_2": "conseguenze",
+        "Paragrafo_3": "riflessione",
+        "feriti": "2313",
+        "morti": "321",
+        "Immagine_1": "321",
+        "Immagine_2": "321"
+    },
+    "coords": [
+        "32.7522877",
+        "-79.87462531951533"
+    ]
+}]
+
 fetch("conf.json").then(r => r.json()).then(conf => {
     const fetchComp = generateFetchComponent();
     const Map=createMap()
     const table1 = tableComponent();
     const detailComp = createDetail(paginaPosto);
-    const navigator = createNavigator(document.querySelector("#container"));
+    const navigator = createNavigator(document.querySelector("#container"),detailComp);
     const form_login=createFormLogin(formLogin)
     const Login = createLogin()
     const form = createForm(formElement);
@@ -52,7 +73,7 @@ fetch("conf.json").then(r => r.json()).then(conf => {
 
         //detailComp.render();
         Map.setData(p)
-        Map.render()
+        Map.render(detailComp)
     });
     form.render(table1, Map, conf, fetchComp, tabellaAdmin);
     form_login.render(Login,bottone_admin)
