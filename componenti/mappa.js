@@ -19,7 +19,7 @@ export const createMap = () =>{
             places.forEach((place) => {
                 const marker = L.marker(place.coords).addTo(map);
                 marker.bindPopup(`
-                    <h4 class="marker" id="${place.name.id}">${place.name.Titolo}</h4>
+                    <h4 id="${place.name.id}">${place.name.Titolo}</h4>
                     <p>Data: ${place.name.Datainizio}</p>
                     <p>Ora: ${place.name.Datafine}</p>
                     <p>N° Feriti: ${place.name.feriti}</p>
