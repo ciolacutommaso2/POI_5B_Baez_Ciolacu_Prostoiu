@@ -120,31 +120,34 @@ export const createTableAdmin = (compFetch) => {
                         fetch(url)
                         .then(r => r.json())
                         .then(data3 => {
-                            console.log("ok")
                             data[i].name = dataDiz;
                             data[i].coords = [data3[0].lat, data3[0].lon]
+                            compFetch.setData(data).then(dato => {
+                                compFetch.getData().then(datoNew=>{
+                                    data = datoNew;
+                                    console.log("DATO MODIFICATO -> ", datoNew);
+                                    document.querySelector("#Aggiungi").classList.remove("hidden")
+                                    document.querySelector("#Aggiungi").classList.add("visible")
+                                    document.querySelector("#Modifica").classList.remove("visible")
+                                    document.querySelector("#Modifica").classList.add("hidden")
+                                    table1.setData(datoNew);
+                                    table1.render();
+                                    Mappa.setData(datoNew);
+                                    Mappa.render();
+                                    table.render(conf,form,table,Mappa,table1)
+                                    document.querySelector("#Posizione").value = "";
+                                    document.querySelector("#Titolo").value = "";
+                                    document.querySelector("#Data_inizio").value = "";
+                                    document.querySelector("#Data_fine").value = "";
+                                    document.querySelector("#Paragrafo_1").value = "";
+                                    document.querySelector("#Paragrafo_2").value = "";
+                                    document.querySelector("#Paragrafo_3").value = "";
+                                    document.querySelector("#Feriti").value = "";
+                                    document.querySelector("#Morti").value = "";
+                                    document.querySelector("#Immagine_1").value = "";
+                                    document.querySelector("#Immagine_2").value = "";
+                            })})
                         });
-                        compFetch.setData(data).then(dato => {
-                            compFetch.getData().then(datoNew=>{
-                                data = datoNew;
-                                console.log("DATO MODIFICATO -> ", datoNew);
-                                document.querySelector("#Aggiungi").classList.remove("hidden")
-                                document.querySelector("#Aggiungi").classList.add("visible")
-                                document.querySelector("#Modifica").classList.remove("visible")
-                                document.querySelector("#Modifica").classList.add("hidden")
-                                table.render(conf,form,table)
-                                document.querySelector("#Posizione").value = "";
-                                document.querySelector("#Titolo").value = "";
-                                document.querySelector("#Data_inizio").value = "";
-                                document.querySelector("#Data_fine").value = "";
-                                document.querySelector("#Paragrafo_1").value = "";
-                                document.querySelector("#Paragrafo_2").value = "";
-                                document.querySelector("#Paragrafo_3").value = "";
-                                document.querySelector("#Feriti").value = "";
-                                document.querySelector("#Morti").value = "";
-                                document.querySelector("#Immagine_1").value = "";
-                                document.querySelector("#Immagine_2").value = "";
-                        })})
                     }
 
                }
