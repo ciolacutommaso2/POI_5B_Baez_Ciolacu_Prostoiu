@@ -44,8 +44,8 @@ export const createTableAdmin = (compFetch) => {
                         `
             
             //INSERIMENTO HTML
+            console.log(data)
             for (let i = 0; i < data.length; i++) {
-                console.log(i)
 
                 // Controllo che l'oggetto abbia la struttura attesa
                 if (!data[i] || !data[i].name || !data[i].name.Titolo) {

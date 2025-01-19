@@ -74,6 +74,7 @@ export const createForm = (parentElement) => {
                             table1.render();
                             mappa.add(dato);
                             mappa.render();
+                            console.log(dato)
                             tabellaAdmin.addData(dato)
                             tabellaAdmin.render(conf,form,tabellaAdmin,mappa,table1)
                             outputform.innerHTML="ok";
