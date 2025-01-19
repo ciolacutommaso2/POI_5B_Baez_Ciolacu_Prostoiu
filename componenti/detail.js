@@ -106,7 +106,7 @@ export const createDetail = (parentElement) => {
                                 <div class="border rounded bg-light d-flex align-items-center justify-content-center"
                                     style="height: 300px;">
                                     <span class="text-center">
-                                        <img src="${item.name.Immagine_1}" alt="${item.name.Titolo}" style="max-width: 100%; max-height: 100%;" />
+                                        <img src="${item.name.Immagine_1}" alt="${item.name.Titolo}" class="immaginiDetail" />
                                     </span>
                                 </div>
                             </div>
