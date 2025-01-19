@@ -10,3 +10,8 @@
 #Password {
     margin-bottom: 20px;
 }
+
+.immaginiDetail {
+    width: 100%;
+    overflow: hidden;
+}
