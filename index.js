@@ -6,6 +6,7 @@ const formLogin = document.getElementById("formlogin");
 const bottone_formlogin = document.getElementById("Login");
 const bottone_admin = document.getElementById("buttonadmin");
 const paginaPosto = document.getElementById("pagina_posto");
+const tabellaAdmin1 = document.getElementById("tabellaAdmin");
 document.body.focus();
 bottone_admin.classList.add("d-none");
 
@@ -17,12 +18,14 @@ import {generateFetchComponent} from './componenti/fetch_component.js';
 import {createMap} from './componenti/mappa.js';
 import {ricerca} from './componenti/barra_ricerca.js';
 import {createNavigator} from "./componenti/navigator.js";
-import {createDetail} from "./componenti/detail.js"
+import {createDetail} from "./componenti/detail.js";
+import {createTableAdmin} from "./componenti/tabellaAdmin.js";
+
 
 let dati_fetch;
 
 fetch("conf.json").then(r => r.json()).then(conf => {
-    const fetch = generateFetchComponent();
+    const fetchComp = generateFetchComponent();
     const Map=createMap()
     const table1 = tableComponent();
     const detailComp = createDetail(paginaPosto);
@@ -30,20 +33,28 @@ fetch("conf.json").then(r => r.json()).then(conf => {
     const form_login=createFormLogin(formLogin)
     const Login = createLogin()
     const form = createForm(formElement);
+    const tabellaAdmin = createTableAdmin(fetchComp);
 
-    fetch.caricaDati(conf)
-    fetch.getData().then(p => {
-        console.log(p)
-        dati_fetch=p
+    fetchComp.caricaDati(conf)
+    fetchComp.getData().then(p => {
+        if (p == null){p = []}
+        console.log("PPPP: ", p)
+        dati_fetch=p;
         table1.setParentElement(tabella);
         table1.setData(p);
         table1.render();
         detailComp.setData(p);
+
+        //TABELLA ADMIN
+        tabellaAdmin.setParentElement(tabellaAdmin1);
+        tabellaAdmin.setData(p);
+        tabellaAdmin.render(form);
+
         //detailComp.render();
         Map.setData(p)
         Map.render()
     });
-    form.render(table1, Map, conf,fetch);
+    form.render(table1, Map, conf, fetchComp, tabellaAdmin);
     form_login.render(Login,bottone_admin)
     //BARRA DI RICERCA
     //let filtro = document.querySelectorAll("filtro");
