@@ -160,9 +160,9 @@ export const createTableAdmin = (compFetch) => {
                             data = dato;
                             console.log("DATO ELIMINATO -> ", dato);
                             //parentElement.innerHTML = html;
-                            table1.setData(datoNew);
+                            table1.setData(dato);
                             table1.render();
-                            Mappa.setData(datoNew);
+                            Mappa.setData(dato);
                             Mappa.render();
                             table.render(conf,form,table,Mappa,table1)
                         });
