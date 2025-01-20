@@ -90,6 +90,18 @@ fetch("conf.json").then(r => r.json()).then(conf => {
     }else {
         console.error("Elemento filtro non trovato!");
     }
+    setInterval(()=>{
+        fetchComp.getData().then(p => {
+            table1.setData(p);
+            table1.render();
+            tabellaAdmin.setData(p);
+            tabellaAdmin.render(conf,form,tabellaAdmin,Map,table1);
+            Map.setData(p)
+            Map.render(detailComp)
+            console.log("ok")
+            console.log(p)
+            });
+    },300000)
 });
 window.addEventListener("load", function () {
     let risposta = sessionStorage.getItem("login");
