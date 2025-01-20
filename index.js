@@ -100,6 +100,17 @@ fetch("conf.json").then(r => r.json()).then(conf => {
             Map.render(detailComp)
             console.log("ok")
             console.log(p)
+            let posti = document.querySelectorAll(".marker")
+            posti.forEach((pst)=>{
+                pst.onclick=()=>{
+                    dati_fetch.forEach(df=>{
+                        if(df.name.Titolo===pst.innerText){
+                            detailComp.navigateToDetail(df.name.id);
+                        }
+                    })
+                }
+            })
+            detailComp.setData(p);
             });
     },300000)
 });
