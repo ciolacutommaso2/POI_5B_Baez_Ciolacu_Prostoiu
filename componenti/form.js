@@ -42,7 +42,7 @@ export const createForm = (parentElement) => {
                     const dataInput = new Date(anno, mese-1, giorno, 0, 0, 0, 0);
                     const [anno1,mese1,giorno1] = Datafine.split("-");
                     const dataInput1 = new Date(anno1, mese1-1, giorno1, 0, 0, 0, 0);
-                    if (dataInput < adesso && dataInput1 < adesso && dataInput < dataInput1){
+                    if (dataInput < adesso && dataInput1 < adesso && dataInput <= dataInput1){
                         outputform.innerHTML="ok"; 
                         const idunico = uuidv4();//ID GENERATO CASUALMENTE 
                         const dataDiz = {
